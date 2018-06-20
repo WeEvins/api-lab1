@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import 'isomorphic-fetch';
-import movieCard from '/components/movieCard';
+import movieCard from './components/movieCard';
 
 const FILM_API = "https://ghibliapi.herokuapp.com"
 
