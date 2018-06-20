@@ -5,11 +5,13 @@ let movieCard = (props) => (
         <div className="col-md-3">
             <div className="card border-dark mb-3">
                 <div className="card-header">
-                {/* movie title goes here */}
+                <p>
+                {props.movie.title}
+                </p>
                 </div> 
                 <div className="card-body text-dark">
                     <p className="card-text">
-                    {/* description of movie goes here */}
+                {props.movie.description}
                     </p>
                 </div>
             </div>

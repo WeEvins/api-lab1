@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import 'isomorphic-fetch';
-import movieCard from './components/movieCard';
+import MovieCard from './components/movieCard';
 
-const FILM_API = "https://ghibliapi.herokuapp.com"
+const FILM_API = "https://ghibliapi.herokuapp.com/films"
 
 class App extends Component {
   constructor(props) {
@@ -16,17 +16,26 @@ class App extends Component {
   handleClick() {
     fetch(FILM_API)
       .then((response) => response.json())
-      .then((response) => this.setState({movies: response}))
+      .then((response) => {
+        console.log(response)
+        return response
+      })
+      .then((response) => this.setState({ movies: response }))
   };
 
   render() {
     return (
-      <button type="button"
-        class="btn btn-warning"
-        onClick={this.handleClick}>Load Films
+      <div>
+        <button type="button"
+          className="btn btn-warning"
+          onClick={() => this.handleClick()}>Load Films
       </button>
-    );
 
+        {this.state.movies.map((movie, index) =>
+          <MovieCard key={index} movie={movie}/>
+        )}
+      </div>
+    );
   }
 }
 
